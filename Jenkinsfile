@@ -35,7 +35,7 @@ spec:
 	    sh 'git clone https://github.com/zyb2n/taas-pipeline-03.git /tmp/taas-pipeline-03'
 //            sh 'aws --version'
 //            sh 'aws s3 ls'
-            sh 'ACCOUNT=`aws sts get-caller-identity --output text --query 'Account'`;inspec exec /tmp/taas-pipeline-03/profile-aws -t aws://  --reporter cli json:$BUILD_NUMBER/json/aws-${ACCOUNT}.output.json junit:$BUILD_NUMBER/junitreport/aws-${ACCOUNT}.junit.xml html:$BUILD_NUMBER/www/aws-${ACCOUNT}.index.html || true'
+            sh "ACCOUNT=`aws sts get-caller-identity --output text --query 'Account'`;inspec exec /tmp/taas-pipeline-03/profile-aws -t aws://  --reporter cli json:$BUILD_NUMBER/json/aws-${ACCOUNT}.output.json junit:$BUILD_NUMBER/junitreport/aws-${ACCOUNT}.junit.xml html:$BUILD_NUMBER/www/aws-${ACCOUNT}.index.html || true"
             sh "/es_loader.sh store-elasticsearch-client $BUILD_NUMBER/json/aws-${ACCOUNT}.output.json"
          }
         }
