@@ -33,8 +33,7 @@ spec:
           sshagent (credentials: ['taas-ssh']) {
             sh 'inspec version'
 	    sh 'git clone https://github.com/zyb2n/taas-pipeline-03.git /tmp/taas-pipeline-03'
-            sh "aws sts get-caller-identity --output text --query 'Account'"
-            sh "inspec exec /tmp/taas-pipeline-03/profile-aws -t aws://  --reporter cli json:$BUILD_NUMBER/json/aws-`aws sts get-caller-identity --output text --query 'Account'`.output.json junit:$BUILD_NUMBER/junitreport/aws-`aws sts get-caller-identity --output text --query 'Account'`.junit.xml html:$BUILD_NUMBER/www/aws-`aws sts get-caller-identity --output text --query 'Account'`.index.html || true"
+            sh "inspec exec /tmp/taas-pipeline-03/profile-aws -t aws://  --reporter cli json:$BUILD_NUMBER/json/aws-`aws sts get-caller-identity --output text --query 'Account'`-${AWS_REGION}.output.json junit:$BUILD_NUMBER/junitreport/aws-`aws sts get-caller-identity --output text --query 'Account'`-${AWS_REGION}.junit.xml html:$BUILD_NUMBER/www/aws-`aws sts get-caller-identity --output text --query 'Account'`-${AWS_REGION}.index.html || true"
             sh "/es_loader.sh store-elasticsearch-client $BUILD_NUMBER/json/aws-*.output.json"
          }
         }
