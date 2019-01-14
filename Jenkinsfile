@@ -9,6 +9,8 @@ kind: Pod
 metadata:
   labels:
     app: taas-jenkins-slave
+  annotations:
+    iam.amazonaws.com/role: arn:aws:iam::884956725745:role/taas-NodeInstanceRole-1P30OR4Q5QLT3
 spec:
   containers:
   - name: taas
