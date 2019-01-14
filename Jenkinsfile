@@ -31,6 +31,7 @@ spec:
             sh 'inspec version'
 //	    sh 'git clone https://github.com/zyb2n/taas-pipeline-03.git /tmp/taas-pipeline-03'
             sh 'aws --version'
+            sh 'aws s3 ls'
          }
         }
       }
