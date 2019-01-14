@@ -29,9 +29,10 @@ spec:
         container('taas') {
           sshagent (credentials: ['taas-ssh']) {
             sh 'inspec version'
-//	    sh 'git clone https://github.com/zyb2n/taas-pipeline-03.git /tmp/taas-pipeline-03'
-            sh 'aws --version'
-            sh 'aws s3 ls'
+	    sh 'git clone https://github.com/zyb2n/taas-pipeline-03.git /tmp/taas-pipeline-03'
+//            sh 'aws --version'
+//            sh 'aws s3 ls'
+            sh 'inspec exec taas-pipeline-03/profile-aws/controls -t aws://'
          }
         }
       }
